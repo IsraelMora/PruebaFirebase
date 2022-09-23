@@ -1,0 +1,47 @@
+<div id="container_main">
+  <mat-toolbar class="main_toolbar">
+    <button
+      mat-icon-button
+      (click)="opensidenav = !opensidenav"
+    >
+      <mat-icon>menu</mat-icon>
+    </button>
+    <span>My App</span>
+    <span class="spacer"></span>
+    <button
+      mat-icon-button
+      (click)="logout()"
+    >
+      <mat-icon>exit_to_app</mat-icon>
+    </button>
+  </mat-toolbar>
+
+  <mat-sidenav-container class="container_sidenav">
+    <mat-sidenav #sidenav mode="side" [opened]="opensidenav">
+
+      <mat-tree [dataSource]="dataSource" [treeControl]="treeControl">
+        <!-- This is the tree node template for leaf nodes -->
+        <mat-tree-node *matTreeNodeDef="let node" matTreeNodePadding>
+          <!-- use a disabled button to provide padding for tree leaf -->
+          <button mat-button (click)="navegatePage(node.url)">
+            {{node.name}}
+          </button>
+        </mat-tree-node>
+        <!-- This is the tree node template for expandable nodes -->
+        <mat-tree-node *matTreeNodeDef="let node;when: hasChild" matTreeNodePadding>
+          <button mat-button matTreeNodeToggle>
+            <mat-icon class="mat-icon-rtl-mirror">
+              {{treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'}}
+            </mat-icon>
+            {{node.name}}
+          </button>
+        </mat-tree-node>
+      </mat-tree>
+
+    </mat-sidenav>
+
+    <mat-sidenav-content class="content_sidenav">
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>
