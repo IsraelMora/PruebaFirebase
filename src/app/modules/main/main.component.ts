@@ -39,7 +39,10 @@ export class MainComponent implements OnInit {
 
   dataSource = new MatTreeFlatDataSource(this.treeControl, this.treeFlattener);
 
-  constructor(private logOutService: LogoutService, private router: Router) {
+  constructor(
+    private logOutService: LogoutService,
+    private router: Router,
+    ) {
     this.dataSource.data = [
       {
         name: 'Principal',
