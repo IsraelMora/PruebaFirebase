@@ -8,7 +8,6 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatTreeModule} from '@angular/material/tree';
 
-
 @NgModule({
   imports: [
     CommonModule,
@@ -17,7 +16,7 @@ import {MatTreeModule} from '@angular/material/tree';
     MatToolbarModule,
     MatButtonModule,
     MatSidenavModule,
-    MatTreeModule
+    MatTreeModule,
   ],
   declarations: [MainComponent]
 })

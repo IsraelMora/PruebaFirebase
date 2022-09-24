@@ -14,15 +14,35 @@
   width: 100%;
 }
 
-.container_sidenav{
-    height: 91vh;
+.container_sidenav {
+  height: 91vh;
+  position: relative;
 }
 
-.main_toolbar{
+.main_toolbar {
   background-color: black;
   color: white;
 }
 
-mat-tree-node{
+.button_tree{
   width: 100%;
+  height: 50px;
+}
+
+.container_main_router_outlet{
+  position: absolute;
+  width: 75%;
+  margin-top: 15px;
+  left: 50%;
+  transform: translate(-50%);
+}
+
+.contenedor_data_user{
+  text-align: center;
+}
+
+.photo_user{
+  border-radius: 100%;
+  display: block;
+  margin: auto;
 }

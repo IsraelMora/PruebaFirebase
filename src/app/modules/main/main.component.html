@@ -19,20 +19,27 @@
   <mat-sidenav-container class="container_sidenav">
     <mat-sidenav #sidenav mode="side" [opened]="opensidenav">
 
+      <div class="contenedor_data_user">
+        <img class="photo_user" src="{{photo_user}}" alt="photo_user">
+        <label for="">{{displayName_user}}</label>
+      </div>
+
       <mat-tree [dataSource]="dataSource" [treeControl]="treeControl">
         <!-- This is the tree node template for leaf nodes -->
-        <mat-tree-node *matTreeNodeDef="let node" matTreeNodePadding>
+        <mat-tree-node *matTreeNodeDef="let node">
           <!-- use a disabled button to provide padding for tree leaf -->
-          <button mat-button (click)="navegatePage(node.url)">
+          <button class="button_tree" mat-button (click)="navegatePage(node.url)">
+            <mat-icon>{{node.icon}}</mat-icon>
             {{node.name}}
           </button>
         </mat-tree-node>
         <!-- This is the tree node template for expandable nodes -->
-        <mat-tree-node *matTreeNodeDef="let node;when: hasChild" matTreeNodePadding>
-          <button mat-button matTreeNodeToggle>
+        <mat-tree-node *matTreeNodeDef="let node;when: hasChild">
+          <button class="button_tree" mat-button matTreeNodeToggle>
             <mat-icon class="mat-icon-rtl-mirror">
               {{treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'}}
             </mat-icon>
+            <mat-icon>{{node.icon}}</mat-icon>
             {{node.name}}
           </button>
         </mat-tree-node>
@@ -41,7 +48,9 @@
     </mat-sidenav>
 
     <mat-sidenav-content class="content_sidenav">
-      <router-outlet></router-outlet>
+      <div class="container_main_router_outlet">
+          <router-outlet></router-outlet>
+      </div>
     </mat-sidenav-content>
   </mat-sidenav-container>
 </div>

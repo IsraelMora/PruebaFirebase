@@ -1,0 +1,26 @@
+<h2 mat-dialog-title>Agregar un usuario</h2>
+<mat-divider></mat-divider>
+<br>
+<div mat-dialog-content>
+  <form [formGroup]="form">
+    <mat-form-field>
+      <mat-label>Nombre y Apellido</mat-label>
+      <input formControlName="userName" matInput type="text">
+      <mat-error *ngIf="this.form.get('userName')?.hasError('required')">Campo requerido</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Email</mat-label>
+      <input formControlName="email" matInput type="email">
+      <mat-error *ngIf="this.form.get('email')?.hasError('required')">Campo requerido</mat-error>
+      <mat-error *ngIf="this.form.get('email')?.hasError('email')">Formato invalido</mat-error>
+    </mat-form-field>
+  </form>
+</div>
+<div class="buttons_container">
+    <button mat-raised-button [mat-dialog-close]="form.value" [disabled]="!form.valid">
+      Agregar
+    </button>
+    <button mat-raised-button mat-dialog-close>
+      Cancelar
+    </button>
+</div>

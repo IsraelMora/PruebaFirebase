@@ -1,3 +1,33 @@
-<p>
-  perfilamiento works!
-</p>
+<mat-card>
+  <mat-card-header>
+    <mat-card-title> Perfilamiento </mat-card-title>
+    <mat-card-subtitle>
+      Perfila los usuarios con aceso al aplicativo y los permisos de los mismos
+    </mat-card-subtitle>
+    <div class="container_button_add_user">
+      <button mat-fab color="primary" (click)="openDialog('add')">
+        <mat-icon>person_add</mat-icon>
+      </button>
+    </div>
+  </mat-card-header>
+  <mat-divider></mat-divider>
+  <mat-card-content>
+    <br>
+    <mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+      <ng-container matColumnDef="userName">
+        <mat-header-cell *matHeaderCellDef>Nombre</mat-header-cell>
+        <mat-cell *matCellDef="let user">{{ user.userName }}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="email">
+        <mat-header-cell *matHeaderCellDef>Email</mat-header-cell>
+        <mat-cell *matCellDef="let user">{{ user.email }}</mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+
+    </mat-table>
+  </mat-card-content>
+</mat-card>

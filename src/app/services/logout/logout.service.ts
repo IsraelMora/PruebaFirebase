@@ -13,6 +13,7 @@ export class LogoutService {
 
   logout(){
     this.router.navigate(['']);
+    sessionStorage.clear();
     this.auth.signOut();
   }
 }

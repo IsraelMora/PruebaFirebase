@@ -7,12 +7,12 @@ const routes: Routes = [
     component: MainComponent,
     children: [
       {
-        path: 'home',
+        path: '',
         loadChildren: () => import('../home/home.module').then(m => m.HomeModule)
       },
       {
         path: 'perfilamiento',
-        loadChildren: () => import('../perfilamiento/perfilamiento.component').then(m => m.PerfilamientoComponent)
+        loadChildren: () => import('../perfilamiento/perfilamiento.module').then(m => m.PerfilamientoModule)
       },
     ]
   },

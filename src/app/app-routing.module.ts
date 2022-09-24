@@ -12,7 +12,7 @@ const routes: Routes = [
   {
   path: 'main',
   loadChildren: () => import('./modules/main/main.module').then(m => m.MainModule),
-  canActivate: [AngularFireAuthGuard],
+  // canActivate: [AngularFireAuthGuard],
   data: { authGuardPipe: redirectUnauthorizedToLogin},
   }
 ];

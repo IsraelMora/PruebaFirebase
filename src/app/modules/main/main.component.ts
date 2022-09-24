@@ -1,6 +1,5 @@
 import { LogoutService } from './../../services/logout/logout.service';
 import { Component, OnInit } from '@angular/core';
-import { ThisReceiver } from '@angular/compiler';
 import { FlatTreeControl } from '@angular/cdk/tree';
 import {
   MatTreeFlatDataSource,
@@ -14,7 +13,10 @@ import { Router } from '@angular/router';
   styleUrls: ['./main.component.css'],
 })
 export class MainComponent implements OnInit {
-  public opensidenav: boolean = false;
+
+  public opensidenav: boolean = true;
+  public displayName_user : any;
+  public photo_user : any;
 
   private _transformer = (node: any, level: number) => {
     return {
@@ -22,6 +24,7 @@ export class MainComponent implements OnInit {
       name: node.name,
       level: level,
       url: !node.children ? node.url : null,
+      icon: node.icon,
     };
   };
 
@@ -43,21 +46,26 @@ export class MainComponent implements OnInit {
     private logOutService: LogoutService,
     private router: Router,
     ) {
+    this.photo_user = sessionStorage.getItem('photo_user');
+    this.displayName_user = sessionStorage.getItem('displayName_user');
     this.dataSource.data = [
       {
         name: 'Principal',
-        url: 'home',
+        url: '',
+        icon:'home',
       },
       {
         name: 'Perfilamiento',
         url: 'perfilamiento',
+        icon: "supervisor_account",
       },
     ];
   }
 
   hasChild = (_: number, node: any) => node.expandable;
 
-  ngOnInit() {}
+  ngOnInit() {
+  }
 
   logout() {
     this.logOutService.logout();
