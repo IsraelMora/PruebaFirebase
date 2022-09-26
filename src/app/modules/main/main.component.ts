@@ -6,6 +6,7 @@ import {
   MatTreeFlattener,
 } from '@angular/material/tree';
 import { Router } from '@angular/router';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
 
 @Component({
   selector: 'app-main',
@@ -45,9 +46,8 @@ export class MainComponent implements OnInit {
   constructor(
     private logOutService: LogoutService,
     private router: Router,
+    private auth: AngularFireAuth,
     ) {
-    this.photo_user = sessionStorage.getItem('photo_user');
-    this.displayName_user = sessionStorage.getItem('displayName_user');
     this.dataSource.data = [
       {
         name: 'Principal',
@@ -65,6 +65,14 @@ export class MainComponent implements OnInit {
   hasChild = (_: number, node: any) => node.expandable;
 
   ngOnInit() {
+    this.setDataUser();
+  }
+
+  setDataUser(){
+    this.auth.user.forEach(user =>{
+      this.displayName_user = user!.displayName
+      this.photo_user = user!.photoURL
+    });
   }
 
   logout() {

@@ -30,7 +30,6 @@ export class IdentityComponent implements OnInit {
       .signInWithPopup(new firebase.auth.GoogleAuthProvider())
       .then((r) => {
         if (r.user) {
-          this.dataUser = r.user;
           this.afs
             .collection('users', (ref) =>
               ref.where('email', '==', r.user!.email)
@@ -57,14 +56,5 @@ export class IdentityComponent implements OnInit {
         });
         throw new Error(e);
       });
-    console.log('dataUser',this.dataUser);
-    this.setDataUserInSessionStorage(this.dataUser)
-  }
-
-  setDataUserInSessionStorage(dataUser: any) {
-    sessionStorage.setItem("displayName_user", dataUser.displayName)
-    sessionStorage.setItem("email_user", dataUser.email)
-    sessionStorage.setItem("photo_user", dataUser.photoURL)
-    sessionStorage.setItem("id_user", dataUser.uid)
   }
 }

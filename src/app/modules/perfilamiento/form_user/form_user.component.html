@@ -1,4 +1,4 @@
-<h2 mat-dialog-title>Agregar un usuario</h2>
+<h2 mat-dialog-title>{{data.titulo}}</h2>
 <mat-divider></mat-divider>
 <br>
 <div mat-dialog-content>
@@ -18,7 +18,7 @@
 </div>
 <div class="buttons_container">
     <button mat-raised-button [mat-dialog-close]="form.value" [disabled]="!form.valid">
-      Agregar
+      Aceptar
     </button>
     <button mat-raised-button mat-dialog-close>
       Cancelar

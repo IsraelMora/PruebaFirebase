@@ -5,7 +5,7 @@
       Perfila los usuarios con aceso al aplicativo y los permisos de los mismos
     </mat-card-subtitle>
     <div class="container_button_add_user">
-      <button mat-fab color="primary" (click)="openDialog('add')">
+      <button mat-fab color="primary" (click)="openDialog('add',{titulo:'Agregar usuario'})">
         <mat-icon>person_add</mat-icon>
       </button>
     </div>
@@ -13,7 +13,7 @@
   <mat-divider></mat-divider>
   <mat-card-content>
     <br>
-    <mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    <mat-table [dataSource]="dataSource" #table class="mat-elevation-z8">
 
       <ng-container matColumnDef="userName">
         <mat-header-cell *matHeaderCellDef>Nombre</mat-header-cell>
@@ -23,6 +23,19 @@
       <ng-container matColumnDef="email">
         <mat-header-cell *matHeaderCellDef>Email</mat-header-cell>
         <mat-cell *matCellDef="let user">{{ user.email }}</mat-cell>
+      </ng-container>
+      
+      <ng-container matColumnDef="action">
+        <mat-header-cell *matHeaderCellDef>Acción</mat-header-cell>
+        <mat-cell *matCellDef="let user">
+          <button mat-icon-button class="button_action_table" (click)="openDialog('update',{user:user,titulo:'Editar usuario'})">
+            <mat-icon>edit</mat-icon>
+          </button>
+
+          <button mat-icon-button class="button_action_table" (click)="openDialog('delete',{mensaje:'Desea Borrar el usuario '+ user.userName,user:user})">
+            <mat-icon>delete_outline</mat-icon>
+          </button>
+        </mat-cell>
       </ng-container>
 
       <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>

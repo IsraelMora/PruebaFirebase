@@ -11,7 +11,7 @@
       "prefix": "app",
       "architect": {
         "build": {
-          "builder": "@angular/fire:deploy",
+          "builder": "@angular-devkit/build-angular:browser",
           "options": {
             "outputPath": "dist/prueba_firebase",
             "index": "src/index.html",
@@ -33,13 +33,13 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "500kb",
-                  "maximumError": "1mb"
+                  "maximumWarning": "1.5",
+                  "maximumError": "2mb"
                 },
                 {
                   "type": "anyComponentStyle",
-                  "maximumWarning": "2kb",
-                  "maximumError": "4kb"
+                  "maximumWarning": "1.5mb",
+                  "maximumError": "2mb"
                 }
               ],
               "fileReplacements": [
