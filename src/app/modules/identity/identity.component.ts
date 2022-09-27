@@ -45,12 +45,13 @@ export class IdentityComponent implements OnInit {
                 });
               }
             });
-        }else{
+        } else {
           this._snackBar.open('Usuario no logueado', '', {
             duration: 3000,
           });
         }
-      }).catch((e) => {
+      })
+      .catch((e) => {
         this._snackBar.open('Error en el sistema, intentar mas tarde', '', {
           duration: 3000,
         });

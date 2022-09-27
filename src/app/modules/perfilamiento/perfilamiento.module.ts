@@ -15,7 +15,7 @@ import {MatInputModule} from '@angular/material/input';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatTableModule } from '@angular/material/table';
-import { Modal_confirmationComponent } from 'src/app/components/loading/modal_confirmation/modal_confirmation.component';
+import { Modal_confirmationComponent } from 'src/app/components/modal_confirmation/modal_confirmation.component';
 
 @NgModule({
   imports: [

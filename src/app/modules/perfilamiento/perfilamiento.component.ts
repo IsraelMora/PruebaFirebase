@@ -5,7 +5,7 @@ import {
 } from '@angular/fire/compat/firestore';
 import { MatDialog } from '@angular/material/dialog';
 import { MatTable } from '@angular/material/table';
-import { Modal_confirmationComponent } from 'src/app/components/loading/modal_confirmation/modal_confirmation.component';
+import { Modal_confirmationComponent } from 'src/app/components/modal_confirmation/modal_confirmation.component';
 import { Collection_users, Doc_users } from 'src/app/models/collection_users';
 import { Form_userComponent } from './form_user/form_user.component';
 
@@ -80,7 +80,8 @@ export class PerfilamientoComponent implements OnInit {
   }
 
   deleteUser(user: Doc_users) {
-    this.afs.doc<Collection_users>("users/"+user.id).delete();
+    this.afs.doc<Collection_users>('users/' + user.id).delete();
+
   }
 
   updateUser(user: Doc_users, update: Collection_users) {
